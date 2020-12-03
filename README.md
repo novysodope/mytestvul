@@ -5,12 +5,15 @@ mytestvul-自己写的一个用来做漏洞复现/验证的小框架
 # 运行
 启动框架查看效果
 
-![](https://assets.baklib.com/t/3f5cfd6c-1cc9-46dd-b035-da429b349cd0/u/233c4a2d-9207-42d6-9b81-cfb0436aae6f/image1606895138833.png)
+![](https://assets.baklib.com/t/3f5cfd6c-1cc9-46dd-b035-da429b349cd0/u/233c4a2d-9207-42d6-9b81-cfb0436aae6f/image1606977207105.png)
 
 测试fastjson反序列化漏洞
 
 ![](https://assets.baklib.com/t/3f5cfd6c-1cc9-46dd-b035-da429b349cd0/u/233c4a2d-9207-42d6-9b81-cfb0436aae6f/image1606895403689.png)
 
+axis远程命令执行漏洞
+
+![](https://assets.baklib.com/t/3f5cfd6c-1cc9-46dd-b035-da429b349cd0/u/233c4a2d-9207-42d6-9b81-cfb0436aae6f/image1606977356446.png)
 
 可以自定义添加其他漏洞环境
 
