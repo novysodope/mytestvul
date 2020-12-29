@@ -4,7 +4,13 @@ mytestvul-自己写的一个用来做漏洞复现/验证的小框架
 推荐使用jdk<=1.8.0_181
 
 rmi反序列化要低于1.8
-# 运行
+rmi启动：
+java -cp jar包 启动类
+```bash
+java -cp rmitest-1.0-SNAPSHOT.jar org.rmitest1.RMIServerTest
+```
+![](https://s3.ax1x.com/2020/12/29/rbNLzn.png)
+# 项目运行
 启动框架查看效果
 
 ![](https://assets.baklib.com/t/3f5cfd6c-1cc9-46dd-b035-da429b349cd0/u/233c4a2d-9207-42d6-9b81-cfb0436aae6f/image1606977207105.png)
