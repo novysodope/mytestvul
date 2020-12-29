@@ -1,4 +1,4 @@
-package org.rmitest1;
+package rmi;
 
 /**
  * @author: novy
