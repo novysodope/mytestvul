@@ -10,7 +10,9 @@ java -cp jar包 启动类
 ```bash
 java -cp rmitest-1.0-SNAPSHOT.jar org.rmitest1.RMIServerTest
 ```
+
 ![](https://s3.ax1x.com/2020/12/29/rbNLzn.png)
+
 # 项目运行
 启动框架查看效果
 
