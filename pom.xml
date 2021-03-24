@@ -221,6 +221,9 @@
     </dependency>
     <!--*****************************spring部分********************************-->
   </dependencies>
+  <modules>
+    <module>SpeLINJ</module>
+  </modules>
 
   <build>
     <finalName>MTV</finalName>
