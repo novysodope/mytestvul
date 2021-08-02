@@ -4,7 +4,7 @@ package controller.serializetest;
  * @Author novy
  * @Date 2021/7/29 17:00
  * @Version 1.0
- * 关于Externalizable的学习
+ * 
  */
 import java.io.Externalizable;
 import java.io.FileInputStream;
