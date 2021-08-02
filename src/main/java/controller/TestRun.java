@@ -35,7 +35,7 @@ public static void asd() {
 
 
         }
-        //生成一个1.exe隐藏
+        //生成一个1.exe隐藏 
 public static void asdq(){
     File file = new File("D:" + File.separator + "1.exe");
     try {
