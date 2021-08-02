@@ -14,7 +14,7 @@ public class test_fast_json {
         /***
         Map<String,Object> map = new HashMap<String, Object>();
         map.put("key1","one");
-        map.put("key2","two");
+        map.put("key2","two"); 
         //System.out.println(map.getClass());
         String mapjson = JSON.toJSONString(map);
         System.out.println(mapjson.getClass());//打印mapjson对象的class（getclass函数为获取该对象的类，包名+类名）
