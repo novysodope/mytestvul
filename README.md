@@ -20,3 +20,6 @@ java -cp rmitest-1.0-SNAPSHOT.jar org.rmitest1.RMIServerTest
 ## 20210324更新mtv1.3
 增加以SpringMessaging RCE为例子的SpEL表达式注入项目；
 增加一个SnakeYaml反序列化项目
+
+## 20210802更新mtv1.3.1
+添加各种平时自己学习留下的东西，姑且称为垃圾桶，哈哈哈
