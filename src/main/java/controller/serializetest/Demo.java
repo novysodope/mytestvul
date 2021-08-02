@@ -1,4 +1,4 @@
-package serializetest;
+package controller.serializetest;
 
 /**
  * @Author novy
