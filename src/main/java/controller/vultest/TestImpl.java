@@ -1,4 +1,4 @@
-package vultest;
+package controller.vultest;
 
 /**
  * @author: novy
