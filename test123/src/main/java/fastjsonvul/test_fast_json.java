@@ -29,11 +29,11 @@ public class test_fast_json {
         System.out.println(user2);
         System.out.println(user2.getName());//从User中获取Name属性的值
 
-        Object obj = JSON.parseObject(serializedStr1);//反序列化恢复对象，因为没有类型转换或没带有Object.class所以还原的是JsonObject
+        Object obj = JSON.parseObject(serializedStr1);
         System.out.println(obj);
         System.out.println(obj.getClass());
 
-        Object obj1 = JSON.parseObject(serializedStr1,Object.class);//反序列化恢复对象，带有Object.class成功还原成一个类
+        Object obj1 = JSON.parseObject(serializedStr1,Object.class);
         //user obj1 = (user) JSON.parseObject(serializedStr1,Object.class);
         System.out.println(obj1);
         User obj2 = (User)obj1;
